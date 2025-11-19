@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { useImmer } from "use-immer";
 
 import type { FormEvent } from "react";
+import Input from "@/app/components/input";
 
 export default function ContainerTodo() {
   const [todos, setTodos] = useImmer({
@@ -37,6 +38,7 @@ export default function ContainerTodo() {
   return (
     <div>
       <form onSubmit={handleAddTodo}>
+        <Input value={todos.text} onChange={handleChangeTodo} />
         <input
           value={todos.text}
           onChange={(e) => handleChangeTodo(e.target.value)}
