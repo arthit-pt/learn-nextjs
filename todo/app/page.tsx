@@ -2,6 +2,6 @@
 
 import ScreenTodo from "./screen/screen-todo";
 
-export default function Page() {
+export default async function Page() {
   return <ScreenTodo />;
 }
