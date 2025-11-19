@@ -33,23 +33,38 @@ export default function ContainerTodo() {
     [setTodos]
   );
 
+  const handleDeleteTodo = useCallback(
+    (index: number) => {
+      setTodos((draft) => {
+        draft.list.splice(index, 1);
+      });
+    },
+    [setTodos]
+  );
+
   console.log("ContainerTodo Render");
 
   return (
     <div>
       <form onSubmit={handleAddTodo}>
         <Input value={todos.text} onChange={handleChangeTodo} />
-        <input
-          value={todos.text}
-          onChange={(e) => handleChangeTodo(e.target.value)}
-        />
       </form>
 
-      <ul>
+      <ol className="list-decimal mt-4 ml-6">
         {todos.list?.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index} className="mb-2">
+            <div className="flex gap-6">
+              <div className="w-lg">{todo}</div>
+              <button
+                onClick={() => handleDeleteTodo(index)}
+                className="bg-red-500 rounded text-white px-2 py-1"
+              >
+                Delete
+              </button>
+            </div>
+          </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }
