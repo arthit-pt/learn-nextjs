@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { InputProps } from "./type";
 
-export default function Input({ props, onChange, value }: InputProps) {
+function Input({ props, onChange, value }: InputProps) {
   return (
     <div className="w-full max-w-sm min-w-[200px]">
       <input
@@ -12,3 +13,5 @@ export default function Input({ props, onChange, value }: InputProps) {
     </div>
   );
 }
+
+export default memo(Input);
